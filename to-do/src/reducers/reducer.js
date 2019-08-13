@@ -14,7 +14,7 @@ export function reducer(state, action) {
     switch (action.type) {
 
         case 'TOGGLE_ITEM':
-            state.todoItems.map(item => {
+            return {...state, todoItems: state.todoItems.map(item => {
                 if (item.id === action.payload) {
                     return {
                         ...item,
@@ -24,18 +24,19 @@ export function reducer(state, action) {
                     return item;
                 }
             })
-            break;
+        }
         case 'ADD_TASK':
             const newTask = {
                 task: action.payload,
                 completed: false,
                 id: Date.now()
-            }
-            return {...state.todoItems, newTask }
+            };
+            console.log(newTask)
+            return {...state, todoItems: [...state.todoItems, newTask]}
 
         case "CLEAR_COMPLETED":
-            return state.todoItems = state.todoItems.filter(item => !item.completed);
-
+            return {...state, todoItems: state.todoItems.filter(item => !item.completed)}
+        
         default: return state;
     }
 }

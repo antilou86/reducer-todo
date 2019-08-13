@@ -17,7 +17,9 @@ class TodoForm extends React.Component {
 
     submitItem = e => {
         e.preventDefault();
+        console.log('YOUR ADD TASK BUTTON IS SENDING A VALUE OF ', this.state.task)
         this.props.dispatch({type:"ADD_TASK", payload: this.state.task});
+        this.setState({task: ''})
     };
 
     render() {
