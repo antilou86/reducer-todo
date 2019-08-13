@@ -3,7 +3,7 @@ import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import {initialState, reducer} from './reducers/reducer';
 
-import './components/Todo.css'
+import '../src/components/todo.css'
 
 const App = () => {
 

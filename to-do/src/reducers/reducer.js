@@ -24,14 +24,14 @@ export function reducer(state, action) {
                     return item;
                 }
             })
-
+            break;
         case 'ADD_TASK':
             const newTask = {
                 task: action.payload,
                 completed: false,
                 id: Date.now()
             }
-            return { ...state.todoItems, newTask }
+            return {...state.todoItems, newTask }
 
         case "CLEAR_COMPLETED":
             return state.todoItems = state.todoItems.filter(item => !item.completed);
