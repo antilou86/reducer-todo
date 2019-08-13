@@ -7,9 +7,12 @@ import Todo from './Todo';
                 {props.todoData.map(item => (
                     <Todo key={item.id} todo={item} dispatch={props.dispatch}/>
                 ))}
-                <button className="clear-btn" onClick={props.clearCompleted}>
-        Clear Completed
-      </button>
+                <button 
+                    className="clear-btn" 
+                    onClick={() => dispatch({type:"CLEAR_COMPLETED"})}
+                >
+                    Clear Completed
+                 </button>
             </div>
         )
     }

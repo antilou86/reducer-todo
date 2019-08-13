@@ -9,22 +9,11 @@ const App = () => {
 
 const [state, dispatch] = useReducer(reducer, initialState)
 
-  setTodoData({
-    todoData: [...todoData, newTask]
-  })
-}
-
-clearCompleted = () => {
-  this.setState({
-    todoData: this.state.todoData.filter(item => !item.completed)
-  });
-};
-
     return (
       <div>
         <h2>Reducer ToDo List: MVP</h2>
-        <TodoList todoData={state} dispatch={dispatch} clearCompleted={clearCompleted}/>
-        <TodoForm addTask={this.addTask}/>
+        <TodoList todoData={state.todoItems} dispatch={dispatch} />
+        <TodoForm dispatch={dispatch}/>
       </div>
     );
 
