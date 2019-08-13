@@ -1,14 +1,13 @@
-import React, { useReducer } from 'react'
 
-const initialState = {
+
+export const initialState = {
     task: 'Learn about reducers',
     completed: false,
     id: 3892987589
 }
 
-function reducer(state, action) {
+export function reducer(state, action) {
     switch(action.type) {
         default: return state;
         }
     }
-    
