@@ -1,52 +1,16 @@
-import React from 'react';
-import TodoForm from './components/TodoComponents/TodoForm';
-import TodoList from './components/TodoComponents/TodoList';
+import React, {useReducer} from 'react';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+import {initialState, reducer} from './reducers/reducer';
 
-import './components/TodoComponents/Todo.css'
+import './components/Todo.css'
 
-let todoData = [{
-  task: 'get cookies',
-  id: 5,
-  completed: false
-},{
-  task: 'eat cookies',
-  id: 1,
-  completed: false
-}]
+const App = () => {
 
-class App extends React.Component {
+const [state, dispatch] = useReducer(reducer, initialState)
 
-  constructor() {
-    super();
-
-    this.state = {
-      todoData,
-    }
-}
-
-toggleItem = id => {
-  this.setState({
-    todoData: this.state.todoData.map(item => {
-      if (item.id === id) {
-        return {
-          ...item,
-          completed: !item.completed
-        };
-      } else {
-        return item;
-      }
-    })
-  })
-}
-
-addTask = taskName => {
-  const newTask = {
-    task: taskName,
-    id: Date.now(),
-    completed: false
-  };
-  this.setState({
-    todoData: [...this.state.todoData, newTask]
+  setTodoData({
+    todoData: [...todoData, newTask]
   })
 }
 
@@ -56,15 +20,16 @@ clearCompleted = () => {
   });
 };
 
-  render() {
     return (
       <div>
-        <h2>ToDo List: MVP</h2>
-        <TodoList todoData={this.state.todoData} toggleItem={this.toggleItem} clearCompleted={this.clearCompleted}/>
+        <h2>Reducer ToDo List: MVP</h2>
+        <TodoList todoData={state} dispatch={dispatch} clearCompleted={clearCompleted}/>
         <TodoForm addTask={this.addTask}/>
       </div>
     );
+
   }
-}
+
+
 
 export default App;
